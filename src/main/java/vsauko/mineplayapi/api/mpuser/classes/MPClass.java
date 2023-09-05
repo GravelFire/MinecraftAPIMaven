@@ -1,10 +1,12 @@
 package vsauko.mineplayapi.api.mpuser.classes;
 
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityShootBowEvent;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.Collections;
 import java.util.Map;
@@ -69,7 +71,10 @@ public abstract class MPClass {
 
    public abstract void onBreakBlock(BlockBreakEvent event, Player player);
 
-
+   public Material preferredItemMaterial()
+   {
+      return Material.BOOK;
+   }
    /**
     * Статы-координаты для кластеризации
     */

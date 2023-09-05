@@ -1,6 +1,8 @@
 package vsauko.mineplayapi.api.mpuser.classes;
 
 import lombok.NonNull;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import vsauko.mineplayapi.api.inventory.impl.BaseSimpleInventory;
@@ -21,14 +23,20 @@ public class MpClassGUI extends BaseSimpleInventory {
       int slot = 0;
       for (MPClass mpClass : MpClassManager.getRegisteredClasses()) {
          addItem(slot++,
-                 ItemUtil.newBuilder(Material.BOOK).setName(mpClass.getName()).setLore(mpClass.lore()).build(),
+                 ItemUtil.newBuilder(mpClass.preferredItemMaterial())
+                         .setName(mpClass.getLocalizedName())
+                         .setLore(mpClass.lore())
+                         .build(),
                  (player1, event) -> {
                     MPUser user = mpUserManager.getMPUser(player.getUniqueId());
-                    if(user != null)
-                    {
+                    if (user != null) {
                        user.setMpClass(mpClass);
                        mpClass.applyAttributes(player);
                        mpClass.giveItemsKit(player);
+                       Bukkit.broadcastMessage(ChatColor.GOLD + "Игрок " +
+                                               ChatColor.GREEN + player.getName() +
+                                               ChatColor.GOLD + " выбрал класс " +
+                                               ChatColor.GREEN + mpClass.getLocalizedName());
                     }
                  });
       }
