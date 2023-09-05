@@ -51,7 +51,7 @@ dependencies {
 group = 'vsauko'
 version = '1.0-SNAPSHOT'
 description = 'MinePlayAPI'
-java.sourceCompatibility = JavaVersion.VERSION_1_8
+java.sourceCompatibility = JavaVersion.VERSION_17
 
 
 tasks.withType(JavaCompile) {
