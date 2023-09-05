@@ -51,7 +51,7 @@ jobs:
       - name: GH Release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: v${{ env.date }}
+          tag_name: MinePlayAPI_1.0-SNAPSHOT
           body: ${{ steps.changelog.outputs.changelog }}
           fail_on_unmatched_files: true
           files: "./build/libs/MinePlayAPI*.jar"
