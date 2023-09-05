@@ -1,10 +1,10 @@
-.idea/
-.gradle/
-.github/
+.idea/*
+.gradle/*
+.github/*
 gradlew
 gradlew.bat
-build/
-gradle/
+build/*
+gradle/*
 *.iws
 *.iml
 *.ipr
