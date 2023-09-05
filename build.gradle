@@ -6,6 +6,7 @@ plugins {
     id 'com.github.johnrengelman.shadow' version '8.1.1'
     id "java"
 }
+
 apply plugin: 'com.github.johnrengelman.shadow'
 shadowJar {
     relocate 'org.reactivestreams', 'vsauko.mineplayapi.libs.reactivestreams'
@@ -14,6 +15,7 @@ shadowJar {
     relocate 'reactor', 'vsauko.mineplayapi.libs.reactor'
     relocate 'io', 'vsauko.mineplayapi.libs.io'
     exclude 'META-INF', 'META-INF/**'
+    minimize()
 }
 apply plugin: 'java'
 jar {
