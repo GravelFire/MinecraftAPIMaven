@@ -7,10 +7,12 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByBlockEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import vsauko.mineplayapi.api.customevents.EntityDamageByPlayerEvent;
+import vsauko.mineplayapi.api.customevents.PlayerDamageByBlockEvent;
 import vsauko.mineplayapi.api.customevents.PlayerDamageByEntityEvent;
 import vsauko.mineplayapi.api.customevents.PlayerDamageByPlayerEvent;
 import vsauko.mineplayapi.api.customevents.PlayerDamageEvent;
@@ -53,6 +55,13 @@ public class PlayerListener implements Listener {
     if (event.getEntity().getType() != EntityType.PLAYER) return;
     PlayerDamageEvent playerDamageEvent = new PlayerDamageEvent((Player) event.getEntity(), event.getCause(),
         event.getDamage());
+    Bukkit.getPluginManager().callEvent(playerDamageEvent);
+    event.setCancelled(playerDamageEvent.isCancelled());
+  }
+  @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = true)
+  public void onEntityDamageByBlock(EntityDamageByBlockEvent event) {
+    if (event.getEntity().getType() != EntityType.PLAYER) return;
+    PlayerDamageByBlockEvent playerDamageEvent = new PlayerDamageByBlockEvent(event.getDamager(), (Player) event.getEntity(), event.getCause(), event.getDamage());
     Bukkit.getPluginManager().callEvent(playerDamageEvent);
     event.setCancelled(playerDamageEvent.isCancelled());
   }

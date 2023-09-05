@@ -10,12 +10,13 @@ import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.entity.EntityDamageEvent;
 
-@RequiredArgsConstructor
 @Getter
-public class EntityDamageByPlayerEvent extends BaseCustomEvent {
+public class EntityDamageByPlayerEvent extends EntityDamageEvent {
 
     private final Player damager;
-    private final Entity target;
-    private final EntityDamageEvent.DamageCause damageCause;
-    private final double damage;
+
+    public EntityDamageByPlayerEvent(Player damager, Entity target, DamageCause damageCause, double damage) {
+        super(target, damageCause, damage);
+        this.damager = damager;
+    }
 }

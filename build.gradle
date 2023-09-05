@@ -49,6 +49,7 @@ dependencies {
     implementation 'org.slf4j:slf4j-simple:2.0.6'
     compileOnly 'com.comphenix.protocol:ProtocolLib:4.8.0'
     compileOnly 'org.projectlombok:lombok:1.18.26'
+
     compileOnly 'com.google.code.gson:gson:2.10.1'
     compileOnly "com.destroystokyo.paper:paper-api:1.12.2-R0.1-SNAPSHOT"
     compileOnly 'net.sf.trove4j:trove4j:3.0.3'

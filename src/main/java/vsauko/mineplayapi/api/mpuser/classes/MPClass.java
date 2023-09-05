@@ -1,33 +1,30 @@
 package vsauko.mineplayapi.api.mpuser.classes;
 
+import java.util.Map;
+import java.util.function.Consumer;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
-import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityShootBowEvent;
-import org.bukkit.inventory.ItemStack;
-
-import java.util.Collections;
-import java.util.Map;
+import vsauko.mineplayapi.api.customevents.EntityDamageByPlayerEvent;
+import vsauko.mineplayapi.api.customevents.PlayerDamageEvent;
 
 /**
  * Классы игроков внутри игр
  */
+@RequiredArgsConstructor
 public abstract class MPClass {
    /**
     * Статы класса для "кластеризации"
     */
 
+   @Getter
    protected final Map<Stats, Float> stats;
 
-   protected MPClass(Map<Stats, Float> stats) {
-      this.stats = stats;
-   }
-
-   public Map<Stats, Float> getStats() {
-      return Collections.unmodifiableMap(stats);
-   }
+   public abstract Material getMaterial();
 
    /**
     * Машинное имя класса. Используется для конифгов, прав и сравнений в предметах
@@ -52,29 +49,17 @@ public abstract class MPClass {
     */
    public abstract String getLocalizedName();
 
-   /**
-    * Применяет аттрибуты класса к игроку. Макс ХП, урон и т.д. и т.п.
-    * @param player Игрок
-    */
 
-   public abstract void applyAttributes(Player player);
-
-   public abstract void giveItemsKit(Player player);
    public abstract String[] lore();
-   public abstract void onDamageTaken(EntityDamageEvent event, Player player);
+   public abstract Consumer<Player> attributes();
+   public abstract Consumer<Player> kit();
 
-   public abstract void onShoot(EntityShootBowEvent event, Player player);
+   public abstract Consumer<EntityShootBowEvent> shootHandler();
+   public abstract Consumer<PlayerDamageEvent> takeDamageHandler();
+   public abstract Consumer<EntityDamageByPlayerEvent> attackHandler();
+   public abstract Consumer<BlockPlaceEvent> placeHandler();
+   public abstract Consumer<BlockBreakEvent> breakHandler();
 
-   public abstract void onPlaceBlock(BlockPlaceEvent event, Player player);
-
-   public abstract void onDealingDamage(EntityDamageEvent event, Player player);
-
-   public abstract void onBreakBlock(BlockBreakEvent event, Player player);
-
-   public Material preferredItemMaterial()
-   {
-      return Material.BOOK;
-   }
    /**
     * Статы-координаты для кластеризации
     */
