@@ -27,19 +27,15 @@
       <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.gradle/vcs-1/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/vsauko/mineplayapi/api/mpuser/classes/MpClassGUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vsauko/mineplayapi/api/mpuser/classes/MPClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vsauko/mineplayapi/api/mpuser/classes/MpClassListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/vsauko/mineplayapi/api/mpuser/MPUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vsauko/mineplayapi/api/mpuser/MPUser.java" afterDir="false" />
-<<<<<<< HEAD
-      <change beforePath="$PROJECT_DIR$/src/main/java/vsauko/mineplayapi/api/mpuser/classes/MPClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vsauko/mineplayapi/api/mpuser/classes/MPClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vsauko/mineplayapi/api/mpuser/classes/MpClassListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vsauko/mineplayapi/api/mpuser/classes/MpClassManager.java" afterDir="false" />
-=======
 >>>>>>> 677d450e809df5eb58abd0eccf4b474d7a59e708
->>>>>>> 7c451c28c6f9047a13e1a75473d708c24778ce01
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -16,6 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/cache@v3.0.3
       
       - name: Generate changelog
         id: changelog
@@ -33,7 +34,7 @@ jobs:
           distribution: 'temurin'
           server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
           settings-path: ${{ github.workspace }} # location for the settings.xml file
-      - name: Build with Maven
+      - name: Build with Gradle
         run: gradle --build-cache assemble --parallel
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

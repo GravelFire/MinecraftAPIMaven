@@ -3,8 +3,17 @@
  */
 
 plugins {
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
     id "java"
-    id 'maven-publish'
+}
+apply plugin: 'com.github.johnrengelman.shadow'
+shadowJar {
+    relocate 'org.reactivestreams', 'vsauko.mineplayapi.libs.reactivestreams'
+    relocate 'org.slf4j', 'vsauko.mineplayapi.libs.slf4j'
+    relocate 'com.zaxxer', 'vsauko.mineplayapi.libs.zaxxer'
+    relocate 'reactor', 'vsauko.mineplayapi.libs.reactor'
+    relocate 'io', 'vsauko.mineplayapi.libs.io'
+    exclude 'META-INF', 'META-INF/**'
 }
 apply plugin: 'java'
 jar {
@@ -14,13 +23,14 @@ jar {
     }
 }
 repositories {
-    mavenLocal()
+    mavenCentral()
     maven {
-        url = uri('https://hub.spigotmc.org/nexus/content/repositories/snapshots/')
+        name = "papermc-repo"
+        url = "https://repo.papermc.io/repository/maven-public/"
     }
-
     maven {
-        url = uri('https://oss.sonatype.org/content/groups/public/')
+        name = "sonatype"
+        url = "https://oss.sonatype.org/content/groups/public/"
     }
 
     maven {
@@ -30,27 +40,34 @@ repositories {
     maven {
         url = uri('https://repo.dmulloy2.net/repository/public/')
     }
-
-    maven {
-        url = uri('https://repo.maven.apache.org/maven2/')
-    }
 }
 
 dependencies {
     implementation 'io.lettuce:lettuce-core:6.2.6.RELEASE'
     implementation 'io.netty:netty-all:4.1.97.Final'
-    implementation 'com.zaxxer:HikariCP:4.0.3'
+    implementation 'com.zaxxer:HikariCP:5.0.1'
     implementation 'org.slf4j:slf4j-simple:2.0.6'
     compileOnly 'com.comphenix.protocol:ProtocolLib:4.8.0'
     compileOnly 'org.projectlombok:lombok:1.18.26'
-    compileOnly 'com.google.code.gson:gson:2.8.9'
+    compileOnly 'com.google.code.gson:gson:2.10.1'
+    compileOnly "com.destroystokyo.paper:paper-api:1.12.2-R0.1-SNAPSHOT"
+    compileOnly 'net.sf.trove4j:trove4j:3.0.3'
+    compileOnly 'mysql:mysql-connector-java:5.1.47'
+
     annotationProcessor 'org.projectlombok:lombok:1.18.26'
-    compileOnly files("libs/spigot.jar")
 }
 
 group = 'vsauko'
 version = '1.0-SNAPSHOT'
 description = 'MinePlayAPI'
+java {
+    def javaVersion = JavaVersion.VERSION_17
+    sourceCompatibility = javaVersion
+    targetCompatibility = javaVersion
+    if (JavaVersion.current() < javaVersion) {
+        toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
+    }
+}
 java.sourceCompatibility = JavaVersion.VERSION_17
 
 
