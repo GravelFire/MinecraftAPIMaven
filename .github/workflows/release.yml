@@ -33,7 +33,7 @@ jobs:
           distribution: 'temurin'
           server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
           settings-path: ${{ github.workspace }} # location for the settings.xml file
-      - name: Build with Maven
+      - name: Build with Gradle
         run: gradle --build-cache assemble --parallel
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
