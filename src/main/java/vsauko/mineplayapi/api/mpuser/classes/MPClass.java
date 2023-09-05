@@ -57,6 +57,8 @@ public abstract class MPClass {
 
    public abstract void applyAttributes(Player player);
 
+   public abstract void giveItemsKit(Player player);
+   public abstract String[] lore();
    public abstract void onDamageTaken(EntityDamageEvent event, Player player);
 
    public abstract void onShoot(EntityShootBowEvent event, Player player);

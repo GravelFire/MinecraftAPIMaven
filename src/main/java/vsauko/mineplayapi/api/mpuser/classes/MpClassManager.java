@@ -4,7 +4,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.event.block.BlockEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageByBlockEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -13,17 +12,37 @@ import org.bukkit.event.entity.EntityShootBowEvent;
 import vsauko.mineplayapi.api.mpuser.MPUser;
 import vsauko.mineplayapi.api.mpuser.MPUserManager;
 
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Класс отвечающий за ивенты для классов
  */
-public class MpClassListener implements Listener {
+public class MpClassManager implements Listener {
+   private static final Set<MPClass> REGISTERED_CLASSES = new HashSet<>();
    /**
     * Менеджер юзеров АПИ
     */
    private final MPUserManager mpUserManager;
 
-   public MpClassListener(MPUserManager mpUserManager) {
+   public MpClassManager(MPUserManager mpUserManager) {
       this.mpUserManager = mpUserManager;
+   }
+
+   public static Set<MPClass> getRegisteredClasses()
+   {
+      return Collections.unmodifiableSet(REGISTERED_CLASSES);
+   }
+
+   public static int countClasses()
+   {
+      return REGISTERED_CLASSES.size();
+   }
+
+   public static void registerClass(MPClass mpClass)
+   {
+      REGISTERED_CLASSES.add(mpClass);
    }
 
    /**
