@@ -60,6 +60,7 @@ dependencies {
 group = 'vsauko'
 version = '1.0-SNAPSHOT'
 description = 'MinePlayAPI'
+<<<<<<< HEAD
 java {
     def javaVersion = JavaVersion.VERSION_17
     sourceCompatibility = javaVersion
@@ -68,6 +69,10 @@ java {
         toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
     }
 }
+=======
+java.sourceCompatibility = JavaVersion.VERSION_17
+
+>>>>>>> 677d450e809df5eb58abd0eccf4b474d7a59e708
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
