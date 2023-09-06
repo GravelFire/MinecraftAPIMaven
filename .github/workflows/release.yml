@@ -9,14 +9,14 @@ on:
   pull_request:
     branches: [ "master" ]
 permissions:
-  contents: read
+  contents: write
   packages: write
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/cache@v3.0.3
+      - name: Check out
+        uses: actions/checkout@v3
       
       - name: Generate changelog
         id: changelog
@@ -35,7 +35,7 @@ jobs:
           server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
           settings-path: ${{ github.workspace }} # location for the settings.xml file
       - name: Build with Gradle
-        run: gradle --build-cache assemble --parallel
+        run: gradle --build-cache shadowJar --parallel
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload artifact
@@ -51,7 +51,7 @@ jobs:
       - name: GH Release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: v${{ env.date }}
+          tag_name: MinePlayAPI_1.0-SNAPSHOT
           body: ${{ steps.changelog.outputs.changelog }}
           fail_on_unmatched_files: true
           files: "./build/libs/MinePlayAPI*.jar"
