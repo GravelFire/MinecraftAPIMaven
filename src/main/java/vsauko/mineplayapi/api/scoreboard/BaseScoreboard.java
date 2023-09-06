@@ -320,7 +320,7 @@ public class BaseScoreboard {
 
 // ======================================================= // SCOREBOARD PROTOCOL // ======================================================= //
 
-    public WrapperPlayServerScoreboardObjective getObjectivePacket(@NonNull int objectiveMode) {
+    public WrapperPlayServerScoreboardObjective getObjectivePacket(int objectiveMode) {
         String currentDisplay = scoreboardDisplay.getCurrentDisplay();
 
         if (currentDisplay.length() > 32) {

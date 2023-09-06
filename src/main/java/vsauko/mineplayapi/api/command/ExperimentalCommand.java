@@ -169,7 +169,7 @@ public abstract class ExperimentalCommand<S extends CommandSender>
         Table<String, Integer, Suggestions<?>> suggestionsByArgumentsTable = HashBasedTable.create();
 
         @SuppressWarnings("all")
-        public <S extends CommandSender> Suggestions<S> getSuggestionsMap(@NonNull String method, @NonNull int argument) {
+        public <S extends CommandSender> Suggestions<S> getSuggestionsMap(@NonNull String method, int argument) {
 
             if (suggestionsByArgumentsTable.contains(method.toLowerCase(), argument)) {
                 return (Suggestions<S>) suggestionsByArgumentsTable.get(method.toLowerCase(), argument);

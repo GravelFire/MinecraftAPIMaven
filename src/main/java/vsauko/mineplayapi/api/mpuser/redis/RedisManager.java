@@ -45,7 +45,7 @@ public class RedisManager {
                    levelObject.get("exp").getAsInt(),
                    balanceObject.get("coins").getAsInt(),
                    balanceObject.get("money").getAsInt()));
-
+               return;
              }
 
              if (channel.equalsIgnoreCase(QUIT.getKeyName())) {
